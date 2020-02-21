@@ -26,6 +26,22 @@ namespace IndyBooks
             //
             context.Books.Add(new Book
             {
+                Title = "The Hobbit",
+                Author = "J.R.R. Tolkien",
+                Edition = "1",
+                Price = 20000.00M,
+                Year = "1937"
+            });
+            context.Books.Add(new Book
+            { 
+                Title = "Pro ASP.NET Core MVC 2",
+                Author = "Adam Freeman",
+                Edition = "7",
+                Price = 21.13M,
+                Year = "2017"
+            });                
+            context.Books.Add(new Book
+            {
                 Title = "Pride and Prejudice",
                 Author = "Jane Austin",
                 Price = 9.99M,

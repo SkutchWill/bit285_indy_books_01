@@ -30,9 +30,27 @@ namespace IndyBooks.Controllers
                 //(Note: searchBook is the info from the form)
                 // TODO: order the results by Title
                 foundBooks = foundBooks
-                             .Where(b => b.Title.Contains(search.Title));
+                             .Where(b => b.Title.Contains(search.Title))
+                             .OrderBy(b => b.Title);
             }
-
+            if (search.Author != null)
+            {
+                foundBooks = foundBooks
+                              .Where(b => b.Author.EndsWith(search.Author));                              
+            }
+            if (search.MaxPrice != 0)
+            {
+                foundBooks = foundBooks
+                    .Where(b => b.Price >= search.MinPrice)
+                    .Where(b => b.Price <= search.MaxPrice)
+                    .OrderByDescending(b => b.Price);
+            }
+            else
+            {
+                foundBooks = foundBooks
+                    .Where(b => b.Price >= search.MinPrice)
+                    .OrderByDescending(b => b.Price);
+            }
             //TODO: Add logic to filter the collection by last part of the Author's Name, if given
             // (HINT: consider the EndsWith() method, also you will need to adjust the View and ViewModel)
 
